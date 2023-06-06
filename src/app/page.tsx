@@ -1,11 +1,19 @@
+"use client";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { increment, decrement } from "@/redux/features/counterSlice";
+
 function HomePage() {
+  const count = useAppSelector((state) => state.counterReducer.counter);
+  const dispatch = useAppDispatch();
+
   return (
     <>
-      <h1>100</h1>
+      <h1> total : {count}</h1>
 
-      <button>Increment</button>
+      <button onClick={() => dispatch(increment())}>Increment</button>
       <br />
-      <button>Decrement</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
     </>
   );
 }
